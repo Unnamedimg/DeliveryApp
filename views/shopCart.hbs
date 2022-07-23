@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="inputBlock">
+        <p>Address:</p>
+        <input class="input" id="address" type="text">
+        <p>Email:</p>
+        <input class="input" id="email" type="email">
+        <p>Phone:</p>
+        <input class="input" id="phone" type="text">
+        <p>Name:</p>
+        <input class="input" id="name" type="text">
+    </div>
+    <div class="productBlock">
+                {{#if products.length}}
+                {{#each products}}
+                    <div class="product" id="{{_id}}">
+                        <div class="productImg" style="background-image:url({{imgsrc}})"></div>
+                        <div class="productTitle">{{title}}</div>
+                        <div class="productPrice">{{price}} UAH</div>
+                        <input class="Price" type="hidden" value="{{price}}">
+                        <label class="productCountLabel" for="{{_id}}">Count:</label>
+                        <input class="productCount" id="count{{_id}}" name="count" type="number" value="{{count}}">
+                        <form action="/shopcart/delete" method="post">
+                        <input name="id" type="hidden" value="{{_id}}">
+                        <button class="productButton" type="submit">Delete</button>
+                        </form>
+                    </div>
+                {{/each}}
+                {{/if}}
+    </div>
+</div>
+<div class="footer">
+    <input readonly id="totalPrice" name="totalPrice" value="">
+    <button type="submit" id="sendOrder">Submit</button>
+</div>
+<script src="totalPrice.js"></script>
+<script src="sendOrder.js"></script>

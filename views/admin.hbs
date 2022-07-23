@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="inputBlock">
+        <form action="/admin/addshop" method="POST">
+            <p>Title:</p>
+            <input type="text" name="title">
+            <button type="submit">Add Shop</button>
+        </form>
+        <hr>
+        {{#if shops}}
+        <form action="/admin/deleteshop" method="POST">
+            <p>Title:</p>
+            <select name="shop">
+            {{#each shops}}
+            <option value="{{_id}}">{{title}}</option>
+            {{/each}}  
+            </select>
+            <button type="submit">delete Shop</button>
+        </form>
+        <hr>
+        <form action="/admin/addproduct" method="post">
+        <p>Title:</p>
+        <input type="text" name="title">
+        <p>Imgsrc:</p>
+        <input type="text" name="imgsrc">
+        <p>Text:</p>
+        <input type="text" name="text">
+        <p>Price:</p>
+        <input type="number" name="price">
+        <p>Shop:</p>
+        <select name="shop">
+            {{#each shops}}
+            <option value="{{_id}}">{{title}}</option>
+            {{/each}}  
+        </select>
+        <button type="submit">Add Product</button>
+        </form>
+        <hr>
+            {{#if products}}
+            <form action="/admin/deleteproduct" method="post">
+            <p>Product:</p>
+            <select name="shop">
+                {{#each products}}
+                <option value="{{_id}}">{{title}}  {{price}}</option>
+                {{/each}}  
+            </select>
+            <button type="submit">Delete Product</button>
+            </form>
+            {{/if}}
+        {{/if}}
+    </div>
+</div>

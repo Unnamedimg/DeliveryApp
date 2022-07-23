@@ -1,0 +1,26 @@
+    <div class="container">
+        <div class="shopsBlock">
+            <button id='all'class="shop">Show All</button>
+            {{#if shops}}
+            {{#each shops}}
+            <button id='{{_id}}'class="shop">{{title}}</button>
+            {{/each}}
+           {{/if}}
+        </div>
+        <div class="productBlock">
+            {{#if products}}
+            {{#each products}}
+                <div class="product {{shop}}">
+                    <div class="productImg {{_id}}" style="background-image:url({{imgsrc}})"></div>
+                    <div class="productTitle {{_id}}">{{title}}</div>
+                    <div class="productText {{_id}}">{{text}}</div>
+                    <div class="productPrice {{_id}}">{{price}} UAH</div>
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button class="productButton" id="b{{_id}}" type="submit">Add</button>
+                </div>
+           {{/each}}
+           {{/if}}
+        </div>
+    </div>
+<script src="filter.js"></script>
+<script src="addToShopCart.js"></script>
